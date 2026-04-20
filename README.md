@@ -1,4 +1,4 @@
-# Luxury Wedding Invitation
+# Dineth & Ishini Wedding Invitation
 
 ## Overview
 A premium wedding invitation landing page built with HTML, Bootstrap 5, Tailwind utilities, and custom CSS. Includes countdown timer, RSVP form wired for Google Sheets, interactive map, and calendar actions.
