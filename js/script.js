@@ -91,8 +91,8 @@ if (musicToggle && bgMusic) {
     musicToggle.classList.toggle("is-playing", isPlaying);
     musicToggle.setAttribute("aria-pressed", String(isPlaying));
     musicToggle.querySelector(".music-text").textContent = isPlaying
-      ? "Pause Music"
-      : "Play Music";
+      ? "Pause"
+      : "Play";
   };
 
   const tryAutoPlay = async () => {
