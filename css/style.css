@@ -393,6 +393,42 @@ body {
   font-size: 0.9rem;
 }
 
+.music-toggle {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 167, 164, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--deep-purple);
+  box-shadow: 0 12px 28px rgba(43, 36, 51, 0.12);
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
+}
+
+.music-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(216, 167, 164, 0.3);
+}
+
+.music-toggle.is-playing {
+  background: linear-gradient(120deg, rgba(216, 167, 164, 0.25), rgba(143, 122, 168, 0.18));
+  box-shadow: 0 0 22px rgba(216, 167, 164, 0.35);
+}
+
+.music-icon {
+  font-size: 1rem;
+}
+
+.music-text {
+  font-size: 0.9rem;
+}
+
 .petal-layer {
   position: fixed;
   inset: 0;
