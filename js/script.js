@@ -80,3 +80,54 @@ const downloadICS = () => {
 if (icsButton) {
   icsButton.addEventListener("click", downloadICS);
 }
+
+const musicToggle = document.getElementById("music-toggle");
+const bgMusic = document.getElementById("bg-music");
+
+if (musicToggle && bgMusic) {
+  bgMusic.volume = 0.05; // Start with very low volume for a gentle fade-in
+
+  const setPlayingState = (isPlaying) => {
+    musicToggle.classList.toggle("is-playing", isPlaying);
+    musicToggle.setAttribute("aria-pressed", String(isPlaying));
+    musicToggle.querySelector(".music-text").textContent = isPlaying
+      ? "Pause Music"
+      : "Play Music";
+  };
+
+  const tryAutoPlay = async () => {
+    try {
+      await bgMusic.play();
+      setPlayingState(true);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const handleFirstInteraction = async () => {
+    const started = await tryAutoPlay();
+    if (started) {
+      document.removeEventListener("click", handleFirstInteraction);
+      document.removeEventListener("touchstart", handleFirstInteraction);
+    }
+  };
+
+  tryAutoPlay();
+  document.addEventListener("click", handleFirstInteraction, { once: false });
+  document.addEventListener("touchstart", handleFirstInteraction, { once: false });
+
+  musicToggle.addEventListener("click", async () => {
+    if (bgMusic.paused) {
+      try {
+        await bgMusic.play();
+        setPlayingState(true);
+      } catch (error) {
+        // Autoplay may be blocked until a user gesture.
+      }
+    } else {
+      bgMusic.pause();
+      setPlayingState(false);
+    }
+  });
+}
